@@ -17,7 +17,19 @@ const router = createBrowserRouter([
 			{ index: true, element: <Table /> },
 			{ path: "post", element: <Table /> },
 			{ path: "post/add", element: <Add /> },
-			{ path: "post/:id", element: <Details /> },
+			{
+				path: "post/:id",
+				element: <Details />,
+				loader: ({ params }) => {
+					if (isNaN(params.id)) {
+						throw new Response("Bad Request", {
+							statusText: "Post ID not correct",
+							status: 400,
+						});
+					}
+					return null;
+				},
+			},
 			{ path: "post/:id/edit", element: <Edit /> },
 		],
 	},
