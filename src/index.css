@@ -1,3 +1,7 @@
+/* global */
+.header .nav .active {
+	color: darkorange;
+}
 .header {
 	margin-bottom: 30px;
 	margin-top: 20px;
@@ -35,10 +39,10 @@
 	font-size: 16px;
 	margin-left: auto;
 }
-table th ,
-table td{
-  border: 1px solid rgb(121, 121, 121);
+table th,
+table td {
+	border: 1px solid rgb(121, 121, 121);
 }
-table tbody tr{
-  background-color: antiquewhite;
+table tbody tr {
+	background-color: antiquewhite;
 }
