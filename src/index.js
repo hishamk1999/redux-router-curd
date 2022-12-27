@@ -1,14 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import "bootstrap/dist/css/bootstrap.min.css"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+//pages
+import { Add, Details, Edit, RootLayout } from "./Pages";
+import { Table } from "Components";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <RootLayout />,
+		children: [
+			{ index: true, element: <Table /> },
+			{ path: "post", element: <Table /> },
+			{ path: "post/add", element: <Add /> },
+			{ path: "post/:id", element: <Details /> },
+			{ path: "post/:id/edit", element: <Edit /> },
+		],
+	},
+]);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-    <App />
-  // </React.StrictMode>
+	// <React.StrictMode>
+	<RouterProvider router={router} />
+	// </React.StrictMode>
 );
-
