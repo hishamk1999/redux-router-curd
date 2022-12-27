@@ -4,9 +4,19 @@
 		{
 			"type": "npm",
 			"script": "start",
+			"path": "Client",
 			"problemMatcher": [],
-			"label": "npm: start",
+			"label": "npm: start - Client",
 			"detail": "react-scripts start",
+			"runOptions": { "runOn": "folderOpen" }
+		},
+		{
+			"type": "npm",
+			"script": "serve",
+			"path": "Server",
+			"problemMatcher": [],
+			"label": "npm: serve - Server",
+			"detail": "json-server --watch db.json --port 5000",
 			"runOptions": { "runOn": "folderOpen" }
 		}
 	]
