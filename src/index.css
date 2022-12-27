@@ -1,35 +1,44 @@
 .header {
-  margin-bottom: 30px;
-  margin-top: 20px;
+	margin-bottom: 30px;
+	margin-top: 20px;
 }
 
 .header h1 {
-  margin: 20px 0;
+	margin: 20px 0;
+}
+.header .ctn-nav {
+	background-color: black;
 }
 .header .nav {
-  background-color: black;
-  height: 50px;
-  list-style: none;
-  display: flex;
-  align-items: center;
+	height: 50px;
+	list-style: none;
+	display: flex;
+	align-items: center;
 }
 
 .header .nav li:first-child {
-  margin-left: 5px;
+	margin-left: 5px;
 }
 
 .header .nav li {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 .header .nav li a {
-  color: white;
-  font-size: 16px;
-  text-decoration: none;
+	color: white;
+	font-size: 16px;
+	text-decoration: none;
 }
 
 .login {
-  color: white;
-  font-size: 16px;
-  margin-left: auto;
+	color: white;
+	font-size: 16px;
+	margin-left: auto;
+}
+table th ,
+table td{
+  border: 1px solid rgb(121, 121, 121);
+}
+table tbody tr{
+  background-color: antiquewhite;
 }
