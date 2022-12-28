@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "State/features/postSlice";
+import PostListItem from "./PostListItem";
 
 function Table() {
 	const { records, loading, error } = useSelector((state) => state.posts);
@@ -8,19 +9,6 @@ function Table() {
 	useEffect(() => {
 		dispatch(fetchPosts());
 	}, [dispatch]);
-
-	const postsUI = records.map((record, index) => {
-		return (
-			<tr key={record.id}>
-				<td>#{++index}</td>
-				<td>{record.title}</td>
-				<td>
-					<button className="btn btn-success">Edit</button>
-					<button className="btn btn-danger">Delete</button>
-				</td>
-			</tr>
-		);
-	});
 
 	return (
 		<table className="w-100" border={1}>
@@ -32,17 +20,7 @@ function Table() {
 				</tr>
 			</thead>
 			<tbody>
-				{loading ? (
-					<tr>
-						<td>Loading please wait...</td>
-					</tr>
-				) : error ? (
-					<tr>
-						<td>{error}</td>
-					</tr>
-				) : (
-					postsUI
-				)}
+				<PostListItem records={records} loading={loading} error={error} />
 			</tbody>
 		</table>
 	);
