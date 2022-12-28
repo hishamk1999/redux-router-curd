@@ -1,14 +1,6 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts } from "State/features/postSlice";
 import PostListItem from "./PostListItem";
 
-function Table() {
-	const { records, loading, error } = useSelector((state) => state.posts);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(fetchPosts());
-	}, [dispatch]);
+function Table({records}) {
 
 	return (
 		<table className="w-100" border={1}>
@@ -20,7 +12,7 @@ function Table() {
 				</tr>
 			</thead>
 			<tbody>
-				<PostListItem records={records} loading={loading} error={error} />
+				<PostListItem records={records} />
 			</tbody>
 		</table>
 	);

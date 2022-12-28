@@ -7,8 +7,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 //pages
-import { Add, Details, Edit, RootLayout, ErrorPage } from "./Pages";
-import { Table } from "Components";
+import { Add, Details, Edit, RootLayout, ErrorPage, Index } from "./Pages";
 
 const router = createBrowserRouter([
 	{
@@ -16,8 +15,8 @@ const router = createBrowserRouter([
 		element: <RootLayout />,
 		errorElement: <ErrorPage />,
 		children: [
-			{ index: true, element: <Table /> },
-			{ path: "post", element: <Table /> },
+			{ index: true, element: <Index /> },
+			{ path: "post", element: <Index /> },
 			{ path: "post/add", element: <Add /> },
 			{
 				path: "post/:id",

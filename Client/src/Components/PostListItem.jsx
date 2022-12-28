@@ -1,6 +1,6 @@
 import React from "react";
 
-function PostListItem({ records, loading, error }) {
+function PostListItem({ records }) {
 	const postsUI = records.map((record, index) => {
 		return (
 			<tr key={record.id}>
@@ -13,21 +13,7 @@ function PostListItem({ records, loading, error }) {
 			</tr>
 		);
 	});
-	return (
-		<>
-			{loading ? (
-				<tr>
-					<td>Loading please wait...</td>
-				</tr>
-			) : error ? (
-				<tr>
-					<td>{error}</td>
-				</tr>
-			) : (
-				postsUI
-			)}
-		</>
-	);
+	return <>{postsUI}</>;
 }
 
 export default PostListItem;
