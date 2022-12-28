@@ -1,24 +1,19 @@
 {
-	"posts": [
-		{
-			"id": 1,
-			"title": "This is the first title",
-			"description": "This the first description"
-		},
-		{
-			"id": 2,
-			"title": "This is the Second title",
-			"description": "This the Second description"
-		},
-		{
-			"id": 3,
-			"title": "This is the Third title",
-			"description": "This the Third description"
-		},
-		{
-			"id": 4,
-			"title": "This is the Fourth title",
-			"description": "This the Fourth description"
-		}
-	]
+  "posts": [
+    {
+      "id": 1,
+      "title": "This is the first title",
+      "description": "This the first description"
+    },
+    {
+      "id": 2,
+      "title": "This is the Second title",
+      "description": "This the Second description"
+    },
+    {
+      "id": 3,
+      "title": "This is the Third title",
+      "description": "This the Third description"
+    }
+  ]
 }

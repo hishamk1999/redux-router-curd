@@ -1,6 +1,11 @@
 import React from "react";
 
 function PostListItem({ records, deleteRecordHandler }) {
+	const deleteHandler = (record) => {
+		if (window.confirm(`Are you sure you want to delete ${record.title}?`)) {
+			deleteRecordHandler(record.id);
+		}
+	};
 	const postsUI = records.map((record, index) => {
 		return (
 			<tr key={record.id}>
@@ -11,7 +16,7 @@ function PostListItem({ records, deleteRecordHandler }) {
 					<button
 						className="btn btn-danger"
 						onClick={() => {
-							deleteRecordHandler(record.id);
+							deleteHandler(record);
 						}}
 					>
 						Delete
