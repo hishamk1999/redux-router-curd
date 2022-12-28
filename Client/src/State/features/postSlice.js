@@ -30,6 +30,24 @@ export const deletePost = createAsyncThunk(
 		}
 	}
 );
+// Insert post into database
+export const insertPost = createAsyncThunk(
+	"posts/insertPost",
+	async (post, thunkAPI) => {
+		const { rejectWithValue } = thunkAPI;
+		try {
+			const res = await fetch(`http://localhost:5000/posts`, {
+				method: "Post",
+				body: JSON.stringify(post),
+				headers: { "Content-Type": "application/json; charset=UTF-8" },
+			});
+			const data = res.json();
+			return data;
+		} catch (error) {
+			return rejectWithValue(error.message);
+		}
+	}
+);
 const postSlice = createSlice({
 	name: "posts",
 	initialState,
@@ -60,6 +78,19 @@ const postSlice = createSlice({
 			);
 		});
 		build.addCase(deletePost.rejected, (state, action) => {
+			state.loading = false;
+			state.error = action.payload;
+		});
+		// Insert post
+		build.addCase(insertPost.pending, (state, action) => {
+			state.loading = true;
+			state.error = null;
+		});
+		build.addCase(insertPost.fulfilled, (state, action) => {
+			state.loading = false;
+			state.records.push(action.payload);
+		});
+		build.addCase(insertPost.rejected, (state, action) => {
 			state.loading = false;
 			state.error = action.payload;
 		});
