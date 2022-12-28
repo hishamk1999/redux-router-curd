@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts } from "State/features/postSlice";
+import { fetchPosts, deletePost } from "../State/features/postSlice";
 import { Loading, Table } from "../Components";
 
 function Index() {
@@ -10,9 +10,16 @@ function Index() {
 		dispatch(fetchPosts());
 	}, [dispatch]);
 
+	const deleteRecordHandler = useCallback(
+		(id) => {
+			dispatch(deletePost(id));
+		},
+		[dispatch]
+	);
+
 	return (
 		<Loading loading={loading} error={error}>
-			<Table records={records} />
+			<Table records={records} deleteRecordHandler={deleteRecordHandler} />
 		</Loading>
 	);
 }

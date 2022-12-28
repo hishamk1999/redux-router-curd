@@ -1,7 +1,7 @@
+import { memo } from "react";
 import PostListItem from "./PostListItem";
 
-function Table({records}) {
-
+function Table({ records, deleteRecordHandler }) {
 	return (
 		<table className="w-100" border={1}>
 			<thead>
@@ -12,10 +12,13 @@ function Table({records}) {
 				</tr>
 			</thead>
 			<tbody>
-				<PostListItem records={records} />
+				<PostListItem
+					records={records}
+					deleteRecordHandler={deleteRecordHandler}
+				/>
 			</tbody>
 		</table>
 	);
 }
 
-export default Table;
+export default memo(Table);
