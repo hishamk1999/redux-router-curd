@@ -3,13 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "State/features/postSlice";
 
 function Table() {
-	const { posts } = useSelector((state) => state);
+	const { records, loading, error } = useSelector((state) => state.posts);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(fetchPosts());
 	}, [dispatch]);
 
-	console.log(posts);
+	const postsUI = records.map((record, index) => {
+		return (
+			<tr key={record.id}>
+				<td>#{++index}</td>
+				<td>{record.title}</td>
+				<td>
+					<button className="btn btn-success">Edit</button>
+					<button className="btn btn-danger">Delete</button>
+				</td>
+			</tr>
+		);
+	});
 
 	return (
 		<table className="w-100" border={1}>
@@ -21,14 +32,17 @@ function Table() {
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>#1</td>
-					<td>this is title 1</td>
-					<td>
-						<button className="btn btn-success">Edit</button>
-						<button className="btn btn-danger">Delete</button>
-					</td>
-				</tr>
+				{loading ? (
+					<tr>
+						<td>Loading please wait...</td>
+					</tr>
+				) : error ? (
+					<tr>
+						<td>{error}</td>
+					</tr>
+				) : (
+					postsUI
+				)}
 			</tbody>
 		</table>
 	);

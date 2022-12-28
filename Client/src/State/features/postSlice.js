@@ -6,11 +6,10 @@ export const fetchPosts = createAsyncThunk(
 	async (_, thunkAPI) => {
 		const { rejectWithValue } = thunkAPI;
 		try {
-			const res = await fetch("http://localhost:5000/post");
+			const res = await fetch("http://localhost:5000/posts");
 			const data = await res.json();
 			return data;
 		} catch (error) {
-			console.log("error", error);
 			return rejectWithValue(error.message);
 		}
 	}
