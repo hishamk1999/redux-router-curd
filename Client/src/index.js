@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import store from "State";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //pages
 import { Add, Details, Edit, RootLayout, ErrorPage } from "./Pages";
 import { Table } from "Components";
@@ -36,7 +38,10 @@ const router = createBrowserRouter([
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+	// release React.StrictMode again in production.
 	// <React.StrictMode>
-	<RouterProvider router={router} />
+	<Provider store={store}>
+		<RouterProvider router={router} />
+	</Provider>
 	// </React.StrictMode>
 );
