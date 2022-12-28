@@ -1,6 +1,16 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "State/features/postSlice";
 
 function Table() {
+	const { posts } = useSelector((state) => state);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchPosts());
+	}, [dispatch]);
+
+	console.log(posts);
+
 	return (
 		<table className="w-100" border={1}>
 			<thead>
